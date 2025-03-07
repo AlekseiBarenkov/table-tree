@@ -1,0 +1,40 @@
+@use '../../assets/styles/variables.sass' as variables
+	
+.header
+	padding: 0.7rem 1.4rem
+	display: flex
+	align-items: center
+	gap: 2rem
+
+	&__icon-inner
+		display: flex
+		align-items: center
+		gap: 1.4rem
+	
+	&__nav
+		&-list
+			display: flex
+			align-items: center
+			gap: 2rem
+
+			li
+				position: relative
+				$top: calc(100% + 0.9rem)
+				color: variables.$text-grey-color
+
+				&:after 
+					content: ''
+					width: 0px
+					height: 2px
+					position: absolute
+					top: $top
+					left: 0
+					background: #fff
+					transition: width 0.2s ease-out
+
+				&.active
+					color: #fff
+					&:after
+						width: 100%
+				
+

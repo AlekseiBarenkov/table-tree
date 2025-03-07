@@ -1,0 +1,53 @@
+@use '../../assets/styles/variables.sass' as variables
+  
+$side-menu-width: 15rem
+
+.dashboard
+  width: 100vw
+  height: 100vh
+  overflow: hidden
+  display: flex
+  flex-direction: column
+
+
+  &__header
+    width: 100%
+    flex-shrink: 0
+    border-bottom: variables.$border
+
+  &__content
+    flex: 1
+    min-height: 0
+    overflow: hidden
+    display: grid
+    grid-template-columns: $side-menu-width 1fr
+    grid-template-rows: auto 1fr
+
+    &-side-menu-header,&-table-header
+      border-bottom: variables.$border
+
+    &-side-menu-header,&-side-menu
+      border-right: variables.$border
+
+    &-side-menu-header
+      grid-column: 1
+      grid-row: 1
+      width: $side-menu-width
+      overflow: hidden
+
+    &-table-header
+      grid-column: 2
+      grid-row: 1
+      overflow: hidden
+
+    &-side-menu
+      grid-column: 1
+      grid-row: 2
+      width: $side-menu-width
+      overflow-y: auto
+
+    &-table
+      grid-column: 2
+      grid-row: 2
+      overflow-y: auto
+      background-color: #202124
