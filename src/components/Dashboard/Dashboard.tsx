@@ -3,7 +3,7 @@ import Header from '../Header';
 import SideMenu from '../SideMenu';
 import SideMenuHeader from '../SideMenuHeader';
 import TableHeader from '../TableHeader';
-import TreeView from '../TreeView';
+import TableContent from '../TableContent';
 
 import './Dashboard.style.sass';
 
@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
 
 				<SideMenu className='dashboard__content-side-menu' />
 
-				<TreeView className='dashboard__content-table' />
+				<TableContent className='dashboard__content-table' />
 			</div>
 		</div>
 	);

@@ -1,0 +1,61 @@
+@use '../../assets/styles/variables.sass' as variables
+
+.tree-view-row
+	border-top: variables.$border
+
+	&:hover
+		.tree-view-row
+			&__icon-container-mask, &__delete-icon
+				opacity: 1
+
+	&__icon-container
+		&, &-mask
+			border-radius: 0.5rem
+
+	&__icon-container
+		padding: 0.2rem 0.5rem
+		position: relative
+		display: inline-flex
+		align-items: center
+		flex-wrap: nowrap
+		gap: 0.5rem
+
+	&__icon-container-mask, &__delete-icon
+		transition: opacity 0.2s linear
+
+	&__icon-container-mask
+		position: absolute
+		z-index: 2
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: #414144
+		opacity: 0
+
+	&__create-icon-inner
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+
+
+	&__create-icon, &__delete-icon
+		position: relative
+		z-index: 3
+		cursor: pointer
+
+	&__delete-icon
+		opacity: 0
+	
+	&__vertical-line, &__horizontal-line
+		z-index: 1
+		position: absolute
+		background-color: variables.$line-color
+
+	&__vertical-line
+		left: 50%
+		transform: translateX(-50%)
+
+	&__horizontal-line
+		top: 50%

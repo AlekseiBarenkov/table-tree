@@ -11,7 +11,8 @@ export default defineConfig({
 			'@assets': path.resolve(__dirname, './src/assets'),
 			'@components': path.resolve(__dirname, './src/components'),
 			'@api': path.resolve(__dirname, './src/api'),
-			'@store': path.resolve(__dirname, './src/store')
+			'@store': path.resolve(__dirname, './src/store'),
+			'@utils': path.resolve(__dirname, './src/utils')
 		}
 	},
 	plugins: [react(), svgr()]

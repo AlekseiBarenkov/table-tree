@@ -1,5 +1,5 @@
 @use '../../assets/styles/variables.sass' as variables
-	
+
 .header
 	padding: 0.7rem 1.4rem
 	display: flex
@@ -10,7 +10,7 @@
 		display: flex
 		align-items: center
 		gap: 1.4rem
-	
+
 	&__nav
 		&-list
 			display: flex
@@ -20,9 +20,9 @@
 			li
 				position: relative
 				$top: calc(100% + 0.9rem)
-				color: variables.$text-grey-color
+				color: variables.$text-color-grey
 
-				&:after 
+				&:after
 					content: ''
 					width: 0px
 					height: 2px
@@ -36,5 +36,3 @@
 					color: #fff
 					&:after
 						width: 100%
-				
-

@@ -1,0 +1,32 @@
+@use '../../assets/styles/variables.sass' as variables
+
+.tree-view
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+  min-width: 60rem
+
+  th, td
+    text-align: left
+    text-overflow: ellipsis
+    overflow-wrap: break-word
+    word-wrap: break-word
+    hyphens: auto
+    word-break: break-all
+
+  th
+    height: 3rem
+    color: variables.$text-color-grey
+
+  &__col
+    width: 14rem
+
+    &.row-level
+      // width: min-content
+      min-width: 5rem
+      max-width: 30rem
+
+    &.row-name
+      width: auto
+      min-width: 14rem
+      max-width: 30rem
