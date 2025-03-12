@@ -82,7 +82,6 @@ export const useRowControl = (
 			if (!isNewRow) {
 				const res = await showFetchingMessage(Api.rows.deleteRow(row.id));
 				applyChangedRows(res?.changed ?? []);
-				console.log(res);
 			}
 
 			deleteRowFromStore(row.id);

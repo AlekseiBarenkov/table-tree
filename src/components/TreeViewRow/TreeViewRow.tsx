@@ -4,10 +4,12 @@ import { CELLS_DATA_PARAMS_KEYS, CONFIG, DATA_CELLS_STYLE } from '@src/constants
 import { useRowControl } from '@src/hooks/useRowControl';
 import { memo, useCallback, type FC } from 'react';
 import { getLevelCellPudding, getLinesStyles } from './TreeViewRow.service';
-
 import type { OutlayRowRequest, RowsThree } from '@src/@types';
-import './TreeViewRow.style.sass';
 import { useOutsideAction } from '@src/hooks/useOutsideAction';
+import checkOnNewRow from '@src/utils/check-on-new-row';
+import { useRowActions } from '@src/store';
+
+import './TreeViewRow.style.sass';
 
 interface Props {
 	row: RowsThree;
@@ -31,6 +33,7 @@ const TreeViewRow: FC<Props> = memo(
 	}) => {
 		const { child, ...rest } = row;
 
+		const deleteRowFromStore = useRowActions().deleteRow;
 		const {
 			editing,
 			values,
@@ -43,7 +46,12 @@ const TreeViewRow: FC<Props> = memo(
 			handleChange
 		} = useRowControl(rest, isSingleParent, parentId);
 
-		const onCancel = useCallback(() => setEditing(false), [setEditing]);
+		const onCancel = useCallback(() => {
+			if (checkOnNewRow(row)) {
+				deleteRowFromStore(row.id);
+			}
+			setEditing(false);
+		}, [setEditing, deleteRowFromStore, row]);
 
 		const ref = useOutsideAction<HTMLTableRowElement>(editing, onCancel);
 
