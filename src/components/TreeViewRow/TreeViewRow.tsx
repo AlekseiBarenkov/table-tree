@@ -2,11 +2,12 @@ import DocIco from '@assets/icons/row-doc.svg?react';
 import TrashIco from '@assets/icons/row-trash.svg?react';
 import { CELLS_DATA_PARAMS_KEYS, CONFIG, DATA_CELLS_STYLE } from '@src/constants/row';
 import { useRowControl } from '@src/hooks/useRowControl';
-import { memo, type FC } from 'react';
+import { memo, useCallback, type FC } from 'react';
 import { getLevelCellPudding, getLinesStyles } from './TreeViewRow.service';
 
 import type { OutlayRowRequest, RowsThree } from '@src/@types';
 import './TreeViewRow.style.sass';
+import { useOutsideAction } from '@src/hooks/useOutsideAction';
 
 interface Props {
 	row: RowsThree;
@@ -34,12 +35,17 @@ const TreeViewRow: FC<Props> = memo(
 			editing,
 			values,
 			isFetching,
+			setEditing,
 			handleDoubleClick,
 			handleInputKeyDown,
 			handleDelete,
 			handleCreate,
 			handleChange
 		} = useRowControl(rest, isSingleParent, parentId);
+
+		const onCancel = useCallback(() => setEditing(false), [setEditing]);
+
+		const ref = useOutsideAction<HTMLTableRowElement>(editing, onCancel);
 
 		const levelCellPudding = getLevelCellPudding(level, isChild);
 
@@ -52,6 +58,7 @@ const TreeViewRow: FC<Props> = memo(
 		return (
 			<>
 				<tr
+					ref={ref}
 					className='tree-view-row'
 					onDoubleClick={handleDoubleClick}
 					style={{ height: `${CONFIG.ROW_HEIGHT}rem` }}

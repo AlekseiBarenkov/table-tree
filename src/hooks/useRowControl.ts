@@ -124,6 +124,7 @@ export const useRowControl = (
 		editing,
 		values,
 		isFetching,
+		setEditing,
 		handleDoubleClick,
 		handleInputKeyDown,
 		handleDelete,
